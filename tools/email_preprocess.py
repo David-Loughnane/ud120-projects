@@ -1,3 +1,4 @@
+# pick seralizes and de-serializes python object structures
 import pickle
 # _pickle replaces the python 2 compatible cPickle module
 #import _pickle
@@ -29,7 +30,10 @@ def preprocess(words_file = "../tools/word_data.pkl", authors_file="../tools/ema
     ### the words (features) and authors (labels), already largely preprocessed
     ### this preprocessing will be repeated in the text learning mini-project
     authors_file_handler = open(authors_file, "rb")
+    # reads a pickled object representation from the open file object
+    # returns the reconstituted object hierarchy specified therein
     authors = pickle.load(authors_file_handler)
+    # explcitily close files : consumes main memory for data structures associated with it
     authors_file_handler.close()
 
     words_file_handler = open(words_file, "rb")
@@ -52,6 +56,7 @@ def preprocess(words_file = "../tools/word_data.pkl", authors_file="../tools/ema
 
     ### feature selection, because text is super high dimensional and 
     ### can be really computationally chewy as a result
+    # results are pretty good with percentile 
     selector = SelectPercentile(f_classif, percentile=10)
     selector.fit(features_train_transformed, labels_train)
     features_train_transformed = selector.transform(features_train_transformed).toarray()
