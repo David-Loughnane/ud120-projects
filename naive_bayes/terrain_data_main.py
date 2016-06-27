@@ -1,20 +1,11 @@
-#!/usr/bin/python
+import numpy as np
+import pylab as pl
 
-""" Complete the code in ClassifyNB.py with the sklearn
-    Naive Bayes classifier to classify the terrain data.
-    
-    The objective of this exercise is to recreate the decision 
-    boundary found in the lesson video, and make a plot that
-    visually shows the decision boundary """
-
+from sklearn.naive_bayes import GaussianNB
+from sklearn import metrics
 
 from prep_terrain_data import makeTerrainData
 from class_vis import prettyPicture, output_image
-from sklearn.naive_bayes import GaussianNB
-from sklearn import metrics as mt
-
-import numpy as np
-import pylab as pl
 
 
 features_train, labels_train, features_test, labels_test = makeTerrainData()
@@ -32,10 +23,10 @@ NBclassifier = GaussianNB()
 NBclassifier.fit(features_train, labels_train)
 
 NBpreditiction = NBclassifier.predict(features_test)
-print mt.accuracy_score(labels_test, NBpreditiction)
+print(metrics.accuracy_score(labels_test, NBpreditiction))
 #print NBclassifier.score(features_test, labels_test)
 
 ### draw the decision boundary with the text points overlaid
-prettyPicture(NBclassifier, features_test, labels_test)
-output_image("test.png", "png", open("test.png", "rb").read())
+prettyPicture(NBclassifier, features_test, labels_test, "naive_bayes/naive_bayes.png")
+output_image("naive_bayes/naive_bayes.png", "png", open("naive_bayes/naive_bayes.png", "rb").read())
 

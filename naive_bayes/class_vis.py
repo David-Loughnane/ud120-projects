@@ -1,6 +1,3 @@
-#!/usr/bin/python
-
-#from udacityplots import *
 import matplotlib 
 matplotlib.use('agg')
 
@@ -8,11 +5,8 @@ import matplotlib.pyplot as plt
 import pylab as pl
 import numpy as np
 
-#import numpy as np
-#import matplotlib.pyplot as plt
-#plt.ioff()
 
-def prettyPicture(clf, X_test, y_test):
+def prettyPicture(clf, X_test, y_test, image_file):
     x_min = 0.0; x_max = 1.0
     y_min = 0.0; y_max = 1.0
 
@@ -41,7 +35,7 @@ def prettyPicture(clf, X_test, y_test):
     plt.xlabel("bumpiness")
     plt.ylabel("grade")
 
-    plt.savefig("test.png")
+    plt.savefig(image_file)
     
 import base64
 import json
@@ -54,4 +48,3 @@ def output_image(name, format, bytes):
     data['name'] = name
     data['format'] = format
     data['bytes'] = base64.encodestring(bytes)
-    #print image_start+json.dumps(data)+image_end
