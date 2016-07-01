@@ -1,12 +1,4 @@
 #!/usr/bin/python 
-
-""" 
-    Skeleton code for k-means clustering mini-project.
-"""
-
-
-
-
 import pickle
 import numpy
 import matplotlib.pyplot as plt
