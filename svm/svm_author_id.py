@@ -5,10 +5,11 @@ sys.path.append("../tools/")
 from memory_profiler import memory_usage
 
 import numpy as np
-from sklearn.svm import GaussianNB
+from sklearn import svm
 from sklearn import metrics
 
 from email_preprocess import preprocess
+
 
 
 #memory_tracker = tracker.SummaryTracker()
@@ -16,10 +17,15 @@ print("Memory usage before: {}MB".format(memory_usage()))
 
 ### FEATURE EXTRACTION ####
 features_train, features_test, labels_train, labels_test = preprocess()
+features_train = features_train[:int(len(features_train)/100)]
+labels_train = labels_train[:int(len(labels_train)/100)]
+
+
 print("features: ", features_train.shape)
 
-#### INSTATNTIATE CLASSIFIER ####
-SVMclassifier = GaussianNB()
+#### INSTANTIATE CLASSIFIER ####
+#SVMclassifier = svm.SVC(kernel="linear") # defualt = "rbf"
+SVMclassifier = svm.SVC(kernel="rbf", C=10000) # higher C -> more complex boundary
 
 #### TRAIN #####
 t0 = time()
