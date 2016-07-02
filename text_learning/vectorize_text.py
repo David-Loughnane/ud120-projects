@@ -31,7 +31,7 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
         ### use parseOutText to extract the text from the opened email
         stemmed_email = parseOutText(email)
         ### use str.replace() to remove any instances of the words
-        words_to_replace = ["sara", "shackleton", "chris", "germani"]
+        words_to_replace = ["sara", "shackleton", "chris", "germani", "sshacklensf", "cgermannsf"]
         for word in words_to_replace:
             if (word in stemmed_email):
                 stemmed_email = stemmed_email.replace(word, "")
