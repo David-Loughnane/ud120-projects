@@ -39,7 +39,7 @@ t1 = time()
 print("Prediction time: {} seconds".format(round(t1-t0,3)))
 print("Prediciton accuracy: {:.2%}".format(metrics.accuracy_score(labels_test, DTpreditiction)))
 
-print("Most important features: ", feature_importances_)
+print("Most important features: ", DTprediciton.feature_importances_)
 
 #memory_tracker.print_diff()
 print("Memory usage after: {}MB".format(memory_usage()))
